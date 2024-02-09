@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: nodejs-app-green
   annotations:
-    testing123: "test"
+    testing123: "test1"
 spec:
   replicas: 1
   selector:
