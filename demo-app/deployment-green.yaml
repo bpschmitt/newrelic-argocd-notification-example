@@ -12,7 +12,7 @@ spec:
       labels:
         app: nodejs-app-green
       annotations:
-        notifications.argoproj.io/subscribe.on-created.newrelic-test
+        notifications.argoproj.io/subscribe.on-created.newrelic-test: ""
     spec:
       containers:
       - name: nodejs-app
