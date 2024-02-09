@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-app-blue
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodejs-app-blue
+  template:
+    metadata:
+      labels:
+        app: nodejs-app-blue
+    spec:
+      containers:
+      - name: nodejs-app
+        image: bschmitt769/nodejs-express-app:newrelic
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+        - name: APP_VERSION
+          value: "blue"
+        - name: NEW_RELIC_LICENSE_KEY
+          valueFrom:
+            secretKeyRef:
+              name: nr-license-key
+              key: nr-license-key
+        - name: NEW_RELIC_APP_NAME
+          value: nodejs-app
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodejs-app-service-blue
+spec:
+  selector:
+    app: nodejs-app-blue
+  ports:
+  - port: 80
+    targetPort: 3000
+    name: http

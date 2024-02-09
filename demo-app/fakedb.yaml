@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fakedb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fakedb
+  template:
+    metadata:
+      labels:
+        app: fakedb
+    spec:
+      containers:
+      - name: fakedb
+        image: bschmitt769/nodejs-fakedb:0.1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fakedb-service
+spec:
+  selector:
+    app: fakedb
+  ports:
+  - port: 80
+    targetPort: 3000
+    name: http

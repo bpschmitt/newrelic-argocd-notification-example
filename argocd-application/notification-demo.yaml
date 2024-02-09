@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: notification-demo
+  namespace: argocd
+spec:
+  destination:
+    name: ''
+    namespace: notification-demo
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: demo-app
+    repoURL: 'https://github.com/bpschmitt/newrelic-argocd-notification-example'
+    targetRevision: main
+  sources: []
+  project: demos
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

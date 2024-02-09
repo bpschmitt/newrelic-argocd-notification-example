@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-app-green
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodejs-app-green
+  template:
+    metadata:
+      labels:
+        app: nodejs-app-green
+      annotations:
+        notifications.argoproj.io/subscribe.on-created.newrelic-test
+    spec:
+      containers:
+      - name: nodejs-app
+        image: bschmitt769/nodejs-express-app:newrelic
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+        - name: APP_VERSION
+          value: "green"
+        - name: NEW_RELIC_LICENSE_KEY
+          valueFrom:
+            secretKeyRef:
+              name: nr-license-key
+              key: nr-license-key
+        - name: NEW_RELIC_APP_NAME
+          value: nodejs-app
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodejs-app-service-green
+spec:
+  selector:
+    app: nodejs-app-green
+  ports:
+  - port: 80
+    targetPort: 3000
+    name: http
