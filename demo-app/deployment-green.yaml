@@ -30,6 +30,8 @@ spec:
               key: nr-license-key
         - name: NEW_RELIC_APP_NAME
           value: nodejs-app
+        - name: DB_HOST
+          value: fakedb-service.notification-demo.svc.cluster.local
 ---
 apiVersion: v1
 kind: Service
