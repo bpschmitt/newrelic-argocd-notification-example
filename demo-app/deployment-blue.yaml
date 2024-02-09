@@ -27,7 +27,7 @@ spec:
               name: nr-license-key
               key: nr-license-key
         - name: NEW_RELIC_APP_NAME
-          value: nodejs-app
+          value: nodejs-app-blue; nodejs-app
 
 ---
 

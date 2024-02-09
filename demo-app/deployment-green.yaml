@@ -29,7 +29,7 @@ spec:
               name: nr-license-key
               key: nr-license-key
         - name: NEW_RELIC_APP_NAME
-          value: nodejs-app
+          value: nodejs-app-green; nodejs-app
         - name: DB_HOST
           value: fakedb-service.notification-demo.svc.cluster.local
         - name: DB_PORT
