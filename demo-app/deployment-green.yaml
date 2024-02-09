@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nodejs-app-green
+  annotations:
+    testing123: "test"
 spec:
   replicas: 1
   selector:
@@ -11,8 +13,6 @@ spec:
     metadata:
       labels:
         app: nodejs-app-green
-      annotations:
-        notifications.argoproj.io/subscribe.on-created.newrelic-test: ""
     spec:
       containers:
       - name: nodejs-app
