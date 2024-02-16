@@ -3,6 +3,11 @@ kind: Application
 metadata:
   name: notification-demo
   namespace: argocd
+  annotations:
+    entityguid: "<NEW RELIC ENTITY GUID>"
+    # notifications.argoproj.io/subscribe.newrelic-app-sync-succeeded.newrelic: ""
+    notifications.argoproj.io/subscribe.newrelic-app-deployed.newrelic: ""
+
 spec:
   destination:
     name: ''
