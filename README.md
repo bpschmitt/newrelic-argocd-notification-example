@@ -80,7 +80,7 @@ annotations:
 
 `entityguid` is the New Relic entity guid for the APM application.  You'll need to perform an initial deployment of your app in order to generate an entity guid in the New Relic platform.  Subsequent deployments can then be associated with this guid.
 
-![New Relic Entity Guid](<./images/nodejs-app-green New Relic 2024-02-16 at 2.33.39 PM.jpg>)
+![New Relic Entity Guid](<./images/entityguid.jpg>)
 
 
 ## New Relic Change Tracking
