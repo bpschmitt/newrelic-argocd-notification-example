@@ -29,9 +29,9 @@ data:
                 version: "{{.app.status.sync.revision}}",
                 entityGuid: "{{.app.metadata.annotations.entityguid}}",
                 commit: "{{.app.status.sync.revision}}",
-                user: "ArgoCD",
+                user: "{{(call .repo.GetCommitMetadata .app.status.sync.revision).Author}}",
                 deploymentType: BASIC,
-                description: "New version of an application {{.app.metadata.name}} has been deployed."
+                description: "{{(call .repo.GetCommitMetadata .app.status.sync.revision).Message}}"
               }
             ) {
               deploymentId
