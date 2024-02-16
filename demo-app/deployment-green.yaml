@@ -35,7 +35,7 @@ spec:
         - name: DB_PORT
           value: "80"
         - name: TEST
-          value: test123456
+          value: test1234567
 ---
 apiVersion: v1
 kind: Service
